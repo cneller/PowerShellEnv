@@ -4,6 +4,9 @@ $IsAdmin = ($NTPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Admin
 
 $global:shortenPathLength = 3
 
+if(-not (test-path $ProfileDir/Modules)) {
+    mkdir $ProfileDir/Modules
+}
 New-PSDrive -Name Modules -PSProvider FileSystem -root $ProfileDir/Modules | Out-Null
 
 $promptCalls = new-object System.Collections.ArrayList
